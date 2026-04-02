@@ -1,0 +1,85 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ShimmerButton } from '@/components/magicui/shimmer-button'; // From 21st.dev
+import { OrbitingCircles } from '@/components/magicui/orbiting-circles';
+
+const LandingPage = () => {
+  return (
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-indigo-500/30">
+      {/* Navigation */}
+      <nav className="flex items-center justify-between px-8 py-6 backdrop-blur-md sticky top-0 z-50 border-b border-white/5">
+        <div className="text-xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+          VORTEX.AI
+        </div>
+        <div className="hidden md:flex gap-8 text-sm text-gray-400">
+          <a href="#" className="hover:text-white transition">Features</a>
+          <a href="#" className="hover:text-white transition">Showcase</a>
+          <a href="#" className="hover:text-white transition">Pricing</a>
+        </div>
+        <button className="px-5 py-2 rounded-full bg-white text-black text-sm font-medium hover:bg-gray-200 transition">
+          Get Started
+        </button>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
+        <div className="max-w-7xl mx-auto text-center relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="px-4 py-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-400 text-xs font-medium uppercase tracking-widest">
+              v2.0 is now live
+            </span>
+            <h1 className="mt-8 text-6xl md:text-8xl font-extrabold tracking-tight leading-[1.1]">
+              Design at the speed of <br />
+              <span className="text-indigo-500">thought.</span>
+            </h1>
+            <p className="mt-6 text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
+              The first AI-native design engine that turns wireframes into 
+              production-ready React components in seconds.
+            </p>
+            
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <ShimmerButton className="shadow-2xl">
+                <span className="whitespace-pre-wrap text-center text-sm font-semibold leading-none tracking-tight text-white lg:text-lg">
+                  Start Building Free
+                </span>
+              </ShimmerButton>
+              <button className="px-8 py-4 rounded-xl border border-white/10 hover:bg-white/5 transition text-lg">
+                View Demo
+              </button>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Background Magic (Visual Interest) */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-indigo-600/20 blur-[120px] rounded-full" />
+          <OrbitingCircles />
+        </div>
+      </section>
+
+      {/* Feature Bento Grid */}
+      <section className="max-w-7xl mx-auto py-24 px-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="md:col-span-2 h-[400px] rounded-3xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent p-8">
+            <h3 className="text-2xl font-bold">Real-time Collaboration</h3>
+            <p className="text-gray-400 mt-2">Work with your team in a shared persistent space.</p>
+            <div className="mt-8 h-full w-full bg-indigo-500/10 rounded-t-2xl border-t border-x border-white/10" />
+          </div>
+          <div className="h-[400px] rounded-3xl border border-white/10 bg-white/5 p-8 flex flex-col justify-between">
+            <div>
+              <h3 className="text-2xl font-bold">Magic Import</h3>
+              <p className="text-gray-400 mt-2">Figma to React in one click.</p>
+            </div>
+            <div className="w-full h-32 bg-cyan-500/20 rounded-xl blur-sm" />
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default LandingPage;
