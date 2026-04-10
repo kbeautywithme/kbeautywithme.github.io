@@ -364,21 +364,199 @@ if(f=!1,v=d.querySelector('#vwoCode'),cc={},-1<d.URL.indexOf('__vwo_disable__')|
         <p>This is a TEST PAGE for GitHub Pages simulation.</p>
         <p>Copyright © SKIN1004 (Mockup). All rights reserved.</p>
     </footer>
+<style>
+    /* Ерөнхий Overlay (Арын бүдгэрүүлэгч) */
+    .kbeauty-popup-overlay {
+        display: none; /* Эхлээд нууц байна */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6); /* Харлуулсан арын дэвсгэр */
+        z-index: 10000; /* Хамгийн дээр харагдана */
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+    .kbeauty-popup-overlay.open {
+        display: flex;
+        opacity: 1;
+    }
+
+    /* Pop-up-ийн үндсэн сав (Container) */
+    .kbeauty-popup-content {
+        background-color: #fff;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 700px;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    /* Хаах "X" товч */
+    .kbeauty-popup-close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        color: #fff; /* Зүүн талын зурган дээр байхаар тооцсон */
+        cursor: pointer;
+        z-index: 10;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    /* Зүүн тал: Зургийн хэсэг */
+    .kbeauty-popup-image-side {
+        width: 50%;
+        background-color: #b37341; /* Зураг ачаалахгүй үед харагдах өнгө */
+        background-image: url('https://i.ibb.co/V9S9D6y/image-4.png'); /* Энэ бол жишээ зураг. Өөрийн зургийг тавьж болно. */
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        padding: 30px;
+    }
+
+    /* Зураг дээрх лого (optional) */
+    .kbeauty-logo-container {
+        display: none; /* Зураг доторлого нэмэхийг хүсвэл энийг block болгоорой */
+        background-color: #fff;
+        border-radius: 50%;
+        padding: 10px;
+        width: 60px;
+        height: 60px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    /* Баруун тал: Текст болон товчлуурын хэсэг */
+    .kbeauty-popup-text-side {
+        width: 50%;
+        background-color: #e5d9ca; /* Зураг дээрхтэй ижилхэн цайвар бор өнгө */
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Текстүүд */
+    .kbeauty-main-text {
+        font-family: 'Playfair Display', serif; /* Luxury serif font */
+        font-size: 32px;
+        font-weight: 700;
+        color: #331d0d;
+        line-height: 1.2;
+        margin-bottom: 25px;
+    }
+
+    /* Товчлуурууд */
+    .kbeauty-action-button {
+        background-color: #b37341; /* Зураг дээрх бор өнгө */
+        color: #fff;
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        max-width: 280px;
+        margin-bottom: 15px;
+        transition: background-color 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .kbeauty-action-button:hover {
+        background-color: #9a6337;
+    }
+
+    /* Хоёр дахь товчлуур */
+    .kbeauty-secondary-button {
+        background-color: transparent;
+        color: #b37341;
+        border: 2px solid #b37341;
+        margin-bottom: 0;
+    }
+
+    .kbeauty-secondary-button:hover {
+        background-color: #fff;
+        color: #9a6337;
+    }
+
+    /* Мобайл төхөөрөмжид тохируулах (Responsive) */
+    @media (max-width: 768px) {
+        .kbeauty-popup-content {
+            flex-direction: column;
+            width: 85%;
+        }
+
+        .kbeauty-popup-image-side,
+        .kbeauty-popup-text-side {
+            width: 100%;
+        }
+
+        .kbeauty-popup-image-side {
+            height: 200px;
+            padding: 20px;
+        }
+
+        .kbeauty-popup-text-side {
+            padding: 30px;
+        }
+
+        .kbeauty-main-text {
+            font-size: 24px;
+        }
+
+        .kbeauty-popup-close {
+            color: #331d0d; /* Баруун талын цайвар дэвсгэр дээр харагдахаар тооцсон */
+        }
+    }
+</style>
+
+<div class="kbeauty-popup-overlay" id="kbeautyPopupOverlay">
+    <div class="kbeauty-popup-content">
+        <span class="kbeauty-popup-close" onclick="closeKBeautyPopup()">&times;</span>
+
+        <div class="kbeauty-popup-image-side">
+            <div class="kbeauty-logo-container">
+                <img src="logo.png" alt="KBeauty Logo" style="max-width:100%; max-height:100%;">
+            </div>
+        </div>
+
+        <div class="kbeauty-popup-text-side">
+            <div class="kbeauty-main-text">Let's K-Beauty with Me</div>
+
+            <button class="kbeauty-action-button" onclick="closeKBeautyPopup()">I'm in! Let's glow.</button>
+
+            <button class="kbeauty-action-button kbeauty-secondary-button" onclick="closeKBeautyPopup()">Get 5% off</button>
+        </div>
+    </div>
+</div>
+
 <script>
-    !function (t, e, c, n) {
-        var s = e.createElement(c);
-        s.async = 1, s.src = 'https://scripts.claspo.io/scripts/' + n + '.js';
-        var r = e.scripts[0];
-        r.parentNode.insertBefore(s, r);
-        var f = function () {
-            f.c(arguments);
-        };
-        f.q = [];
-        f.c = function () {
-            f.q.push(arguments);
-        };
-        t['claspo'] = t['claspo'] || f;
-    }(window, document, 'script', 'A11EDB65708F441EB1C3723C15B4C2C1');
-</script><script>claspo('init');</script>
+    // Хуудас ачаалагдсанаас 3 секундын дараа pop-up гарч ирнэ
+    document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(function() {
+            var overlay = document.getElementById('kbeautyPopupOverlay');
+            overlay.classList.add('open');
+        }, 3000); // 3000ms = 3 секунд
+    });
+
+    // Pop-up хаах функц
+    function closeKBeautyPopup() {
+        var overlay = document.getElementById('kbeautyPopupOverlay');
+        overlay.classList.remove('open');
+    }
+</script>
 </body>
 </html>
