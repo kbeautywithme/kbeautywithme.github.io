@@ -260,7 +260,7 @@
 
     <div class="product-card">
       <div class="product-img-wrap">
-        <img src="779FAFE2-9842-4908-85BA-3153E4DE44C2.JPG" alt="Dive In Serum">
+        <img src="torriden_serum.jpg" alt="Dive In Serum">
         <span class="badge">BEST</span>
         <div class="wishlist-btn">🤍</div>
       </div>
@@ -279,7 +279,7 @@
 
     <div class="product-card">
       <div class="product-img-wrap">
-        <img src="70ADF8BF-426B-4125-B4F5-2CBBE9016E4F.JPG" alt="Dive In Soothing Cream">
+        <img src="torriden_cream.jpg" alt="Dive In Soothing Cream">
         <span class="badge">BEST</span>
         <div class="wishlist-btn">🤍</div>
       </div>
@@ -347,9 +347,9 @@
       <span class="popup-close" onclick="closePopup()">&times;</span>
       <div class="popup-img"></div>
 
-
-      <div class="popup-body" id="step1" style="display:none;">
-        <div class="popup-tag">!</div>
+      <!-- STEP 2: Email signup (шууд гарч ирнэ) -->
+      <div class="popup-body" id="step2">
+        <div class="popup-tag">Special Offer!</div>
         <h2>Get 10% off your first order</h2>
         <p>Enter your email to receive exclusive deals, skincare tips, and early access to new arrivals.</p>
         <div class="email-input-wrap">
@@ -360,7 +360,8 @@
         <button class="popup-cta popup-skip" onclick="closePopup()">No, thank you</button>
       </div>
 
-      <div class="popup-body" id="step2" style="display:none; text-align:center; align-items:center;">
+      <!-- STEP 3: Success -->
+      <div class="popup-body" id="step3" style="display:none; text-align:center; align-items:center;">
         <div class="success-icon">🎉</div>
         <div class="popup-tag" style="text-align:center;">You're in!</div>
         <h2 style="text-align:center;">Welcome to the glow club</h2>
@@ -377,6 +378,7 @@
         var overlay = document.getElementById('popupOverlay');
         overlay.style.display = 'flex';
         requestAnimationFrame(function () { overlay.style.opacity = '1'; });
+        setTimeout(function () { document.getElementById('emailInput').focus(); }, 100);
       }, 10000);
     });
 
@@ -385,20 +387,9 @@
       overlay.style.opacity = '0';
       setTimeout(function () {
         overlay.style.display = 'none';
-        showStep('step1');
+        document.getElementById('step2').style.display = 'flex';
+        document.getElementById('step3').style.display = 'none';
       }, 400);
-    }
-
-    function showStep(id) {
-      ['step1','step2'].forEach(function(s) {
-        document.getElementById(s).style.display = 'none';
-      });
-      document.getElementById(id).style.display = 'flex';
-    }
-
-    function goToStep1() {
-      showStep('step1');
-      setTimeout(function() { document.getElementById('emailInput').focus(); }, 100);
     }
 
     function submitEmail() {
@@ -413,7 +404,8 @@
       }
       input.classList.remove('error');
       error.style.display = 'none';
-      showStep('step2');
+      document.getElementById('step2').style.display = 'none';
+      document.getElementById('step3').style.display = 'flex';
     }
 
     document.querySelectorAll('.cat-pill').forEach(function (pill) {
