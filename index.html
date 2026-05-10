@@ -347,16 +347,9 @@
       <span class="popup-close" onclick="closePopup()">&times;</span>
       <div class="popup-img"></div>
 
-      <div class="popup-body" id="step1">
-        <div class="popup-tag">Welcome Offer</div>
-        <h2>Let's K-Beauty with Me</h2>
-        <p>Join our community and discover the best Korean skincare products, tips, and exclusive deals.</p>
-        <button class="popup-cta" onclick="goToStep2()">I'm in! Let's glow ✨</button>
-        <button class="popup-cta popup-skip" onclick="closePopup()">No, thank you</button>
-      </div>
 
-      <div class="popup-body" id="step2" style="display:none;">
-        <div class="popup-tag">Almost there!</div>
+      <div class="popup-body" id="step1" style="display:none;">
+        <div class="popup-tag">!</div>
         <h2>Get 10% off your first order</h2>
         <p>Enter your email to receive exclusive deals, skincare tips, and early access to new arrivals.</p>
         <div class="email-input-wrap">
@@ -367,7 +360,7 @@
         <button class="popup-cta popup-skip" onclick="closePopup()">No, thank you</button>
       </div>
 
-      <div class="popup-body" id="step3" style="display:none; text-align:center; align-items:center;">
+      <div class="popup-body" id="step2" style="display:none; text-align:center; align-items:center;">
         <div class="success-icon">🎉</div>
         <div class="popup-tag" style="text-align:center;">You're in!</div>
         <h2 style="text-align:center;">Welcome to the glow club</h2>
@@ -384,7 +377,7 @@
         var overlay = document.getElementById('popupOverlay');
         overlay.style.display = 'flex';
         requestAnimationFrame(function () { overlay.style.opacity = '1'; });
-      }, 3000);
+      }, 10000);
     });
 
     function closePopup() {
@@ -397,14 +390,14 @@
     }
 
     function showStep(id) {
-      ['step1','step2','step3'].forEach(function(s) {
+      ['step1','step2'].forEach(function(s) {
         document.getElementById(s).style.display = 'none';
       });
       document.getElementById(id).style.display = 'flex';
     }
 
-    function goToStep2() {
-      showStep('step2');
+    function goToStep1() {
+      showStep('step1');
       setTimeout(function() { document.getElementById('emailInput').focus(); }, 100);
     }
 
@@ -420,7 +413,7 @@
       }
       input.classList.remove('error');
       error.style.display = 'none';
-      showStep('step3');
+      showStep('step2');
     }
 
     document.querySelectorAll('.cat-pill').forEach(function (pill) {
