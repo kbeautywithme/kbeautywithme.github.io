@@ -8,575 +8,101 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Noto Sans KR', sans-serif;
-      background: #fff;
-      color: #222;
-    }
-
+    body { font-family: 'Noto Sans KR', sans-serif; background: #fff; color: #222; }
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
-
-    /* ── TOP BAR ── */
-    .top-bar {
-      background: #f5f5f0;
-      text-align: center;
-      font-size: 12px;
-      padding: 8px;
-      color: #666;
-      letter-spacing: 0.5px;
-    }
-
-    /* ── HEADER ── */
-    header {
-      background: #fff;
-      border-bottom: 1px solid #e8e8e8;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-    }
-
-    .logo {
-      font-size: 22px;
-      font-weight: 700;
-      color: #4a7c59;
-      letter-spacing: -0.5px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-    }
-
-    .nav-links a {
-      font-size: 13px;
-      font-weight: 500;
-      color: #333;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
+    .top-bar { background: #f5f5f0; text-align: center; font-size: 12px; padding: 8px; color: #666; letter-spacing: 0.5px; }
+    header { background: #fff; border-bottom: 1px solid #e8e8e8; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { font-size: 22px; font-weight: 700; color: #4a7c59; letter-spacing: -0.5px; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { font-size: 13px; font-weight: 500; color: #333; letter-spacing: 0.5px; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover { color: #4a7c59; }
-
-    .header-icons {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      font-size: 20px;
-      color: #444;
-    }
-
-    .cart-icon {
-      position: relative;
-      cursor: pointer;
-    }
-
-    .cart-badge {
-      position: absolute;
-      top: -6px;
-      right: -8px;
-      background: #4a7c59;
-      color: #fff;
-      font-size: 10px;
-      font-weight: 700;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* ── HERO BANNER ── */
-    .hero-banner {
-      display: block;
-      width: 100%;
-      cursor: pointer;
-      line-height: 0;
-    }
-
-    .hero-banner img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      color: #fff;
-    }
-
-    .hero-tag {
-      font-size: 12px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 10px;
-    }
-
-    .hero-content h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 48px;
-      line-height: 1.15;
-      margin-bottom: 10px;
-    }
-
-    .hero-content p {
-      font-size: 15px;
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 0;
-    }
-
-    .hero-btn {
-      display: inline-block;
-      padding: 14px 36px;
-      background: #fff;
-      color: #222;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      border-radius: 2px;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .hero-btn:hover {
-      background: #4a7c59;
-      color: #fff;
-    }
-
-    /* ── CATEGORY PILLS ── */
-    .category-bar {
-      max-width: 1200px;
-      margin: 32px auto 0;
-      padding: 0 40px;
-      display: flex;
-      gap: 10px;
-      overflow-x: auto;
-    }
-
-    .cat-pill {
-      flex-shrink: 0;
-      padding: 9px 22px;
-      border: 1px solid #ddd;
-      border-radius: 999px;
-      font-size: 13px;
-      color: #444;
-      cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-
-    .cat-pill:hover, .cat-pill.active {
-      background: #4a7c59;
-      border-color: #4a7c59;
-      color: #fff;
-    }
-
-    /* ── SECTION TITLE ── */
-    .section-header {
-      max-width: 1200px;
-      margin: 48px auto 28px;
-      padding: 0 40px;
-      display: flex;
-      align-items: baseline;
-      gap: 12px;
-    }
-
-    .section-title {
-      font-size: 24px;
-      font-weight: 700;
-      color: #111;
-    }
-
-    .section-sub {
-      font-size: 14px;
-      color: #999;
-    }
-
-    /* ── PRODUCT GRID ── */
-    .product-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 40px 60px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-
-    .product-card {
-      background: #fff;
-      border-radius: 8px;
-      overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.2s;
-      cursor: pointer;
-    }
-
-    .product-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 28px rgba(0,0,0,0.1);
-    }
-
-    .product-img-wrap {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      background: #f7f6f3;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .product-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s;
-    }
-
-    .product-card:hover .product-img-wrap img {
-      transform: scale(1.04);
-    }
-
-    .badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: #4a7c59;
-      color: #fff;
-      font-size: 10px;
-      font-weight: 700;
-      padding: 4px 9px;
-      border-radius: 2px;
-      letter-spacing: 0.5px;
-    }
-
+    .header-icons { display: flex; align-items: center; gap: 18px; font-size: 20px; color: #444; }
+    .cart-icon { position: relative; cursor: pointer; }
+    .cart-badge { position: absolute; top: -6px; right: -8px; background: #4a7c59; color: #fff; font-size: 10px; font-weight: 700; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .hero-banner { display: block; width: 100%; cursor: pointer; line-height: 0; }
+    .hero-banner img { width: 100%; height: auto; display: block; }
+    .category-bar { max-width: 1200px; margin: 32px auto 0; padding: 0 40px; display: flex; gap: 10px; overflow-x: auto; }
+    .cat-pill { flex-shrink: 0; padding: 9px 22px; border: 1px solid #ddd; border-radius: 999px; font-size: 13px; color: #444; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+    .cat-pill:hover, .cat-pill.active { background: #4a7c59; border-color: #4a7c59; color: #fff; }
+    .section-header { max-width: 1200px; margin: 48px auto 28px; padding: 0 40px; display: flex; align-items: baseline; gap: 12px; }
+    .section-title { font-size: 24px; font-weight: 700; color: #111; }
+    .section-sub { font-size: 14px; color: #999; }
+    .product-grid { max-width: 1200px; margin: 0 auto; padding: 0 40px 60px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .product-card { background: #fff; border-radius: 8px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; }
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.1); }
+    .product-img-wrap { width: 100%; aspect-ratio: 1 / 1; background: #f7f6f3; overflow: hidden; position: relative; }
+    .product-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+    .product-card:hover .product-img-wrap img { transform: scale(1.04); }
+    .badge { position: absolute; top: 10px; left: 10px; background: #4a7c59; color: #fff; font-size: 10px; font-weight: 700; padding: 4px 9px; border-radius: 2px; letter-spacing: 0.5px; }
     .badge.sale { background: #c0392b; }
-
-    .wishlist-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 32px;
-      height: 32px;
-      background: #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-      cursor: pointer;
-    }
-
-    .product-info {
-      padding: 14px 14px 16px;
-    }
-
-    .product-brand {
-      font-size: 11px;
-      font-weight: 700;
-      color: #4a7c59;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 5px;
-    }
-
-    .product-name {
-      font-size: 14px;
-      color: #222;
-      line-height: 1.5;
-      height: 42px;
-      overflow: hidden;
-      margin-bottom: 8px;
-    }
-
-    .product-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-      margin-bottom: 10px;
-    }
-
-    .tag {
-      font-size: 10px;
-      background: #f0f5f2;
-      color: #4a7c59;
-      padding: 3px 8px;
-      border-radius: 999px;
-    }
-
-    .product-price-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .price-original {
-      font-size: 12px;
-      color: #bbb;
-      text-decoration: line-through;
-    }
-
-    .price-sale {
-      font-size: 17px;
-      font-weight: 700;
-      color: #222;
-    }
-
-    .price-rate {
-      font-size: 13px;
-      font-weight: 700;
-      color: #c0392b;
-    }
-
-    .star-row {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      margin-bottom: 8px;
-      font-size: 12px;
-      color: #f0a500;
-    }
-
+    .wishlist-btn { position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.12); cursor: pointer; }
+    .product-info { padding: 14px 14px 16px; }
+    .product-brand { font-size: 11px; font-weight: 700; color: #4a7c59; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+    .product-name { font-size: 14px; color: #222; line-height: 1.5; height: 42px; overflow: hidden; margin-bottom: 8px; }
+    .product-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+    .tag { font-size: 10px; background: #f0f5f2; color: #4a7c59; padding: 3px 8px; border-radius: 999px; }
+    .product-price-row { display: flex; align-items: center; gap: 8px; }
+    .price-original { font-size: 12px; color: #bbb; text-decoration: line-through; }
+    .price-sale { font-size: 17px; font-weight: 700; color: #222; }
+    .price-rate { font-size: 13px; font-weight: 700; color: #c0392b; }
+    .star-row { display: flex; align-items: center; gap: 4px; margin-bottom: 8px; font-size: 12px; color: #f0a500; }
     .star-count { color: #999; font-size: 11px; }
-
-    /* ── BANNER STRIP ── */
-    .promo-strip {
-      background: #4a7c59;
-      color: #fff;
-      text-align: center;
-      padding: 28px 40px;
-      margin: 20px 0;
-    }
-
-    .promo-strip h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      margin-bottom: 8px;
-    }
-
-    .promo-strip p {
-      font-size: 14px;
-      opacity: 0.85;
-      margin-bottom: 20px;
-    }
-
-    .promo-btn {
-      display: inline-block;
-      padding: 12px 32px;
-      border: 1.5px solid #fff;
-      color: #fff;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      border-radius: 2px;
-      transition: background 0.2s, color 0.2s;
-    }
-
+    .promo-strip { background: #4a7c59; color: #fff; text-align: center; padding: 28px 40px; margin: 20px 0; }
+    .promo-strip h2 { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 8px; }
+    .promo-strip p { font-size: 14px; opacity: 0.85; margin-bottom: 20px; }
+    .promo-btn { display: inline-block; padding: 12px 32px; border: 1.5px solid #fff; color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border-radius: 2px; transition: background 0.2s, color 0.2s; }
     .promo-btn:hover { background: #fff; color: #4a7c59; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: #1a1a1a;
-      color: #888;
-      padding: 48px 40px 32px;
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 32px;
-      gap: 32px;
-    }
-
-    .footer-logo {
-      font-size: 20px;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 10px;
-    }
-
-    .footer-tagline {
-      font-size: 13px;
-      color: #666;
-      max-width: 240px;
-      line-height: 1.6;
-    }
-
-    .footer-links h4 {
-      font-size: 12px;
-      font-weight: 700;
-      color: #ccc;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-
+    footer { background: #1a1a1a; color: #888; padding: 48px 40px 32px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top { display: flex; justify-content: space-between; margin-bottom: 32px; gap: 32px; }
+    .footer-logo { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .footer-tagline { font-size: 13px; color: #666; max-width: 240px; line-height: 1.6; }
+    .footer-links h4 { font-size: 12px; font-weight: 700; color: #ccc; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; }
     .footer-links ul { display: flex; flex-direction: column; gap: 8px; }
     .footer-links a { font-size: 13px; color: #666; transition: color 0.2s; }
     .footer-links a:hover { color: #fff; }
-
-    .footer-bottom {
-      border-top: 1px solid #2a2a2a;
-      padding-top: 20px;
-      font-size: 12px;
-      color: #555;
-      text-align: center;
-    }
-
-    /* ── POPUP ── */
-    .popup-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-      z-index: 9999;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
-
-    .popup-overlay.open {
-      display: flex;
-      opacity: 1;
-    }
-
-    .popup-box {
-      background: #fff;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 680px;
-      display: flex;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      position: relative;
-    }
-
-    .popup-img {
-      width: 48%;
-      background: #4a7c59 url('Gemini_Generated_Image_ (1).png') center/cover no-repeat;
-      min-height: 380px;
-    }
-
-    .popup-body {
-      width: 52%;
-      padding: 48px 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-    }
-
-    .popup-tag {
-      font-size: 11px;
-      letter-spacing: 2px;
-      color: #4a7c59;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .popup-body h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 30px;
-      color: #111;
-      line-height: 1.2;
-      margin-bottom: 16px;
-    }
-
-    .popup-body p {
-      font-size: 14px;
-      color: #777;
-      line-height: 1.7;
-      margin-bottom: 28px;
-    }
-
-    .popup-cta {
-      width: 100%;
-      padding: 14px;
-      background: #4a7c59;
-      color: #fff;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-bottom: 10px;
-      transition: background 0.2s;
-    }
-
+    .footer-bottom { border-top: 1px solid #2a2a2a; padding-top: 20px; font-size: 12px; color: #555; text-align: center; }
+    .popup-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 9999; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.4s; }
+    .popup-box { background: #fff; border-radius: 12px; width: 90%; max-width: 680px; display: flex; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); position: relative; }
+    .popup-img { width: 48%; background: #4a7c59 url('Gemini_Generated_Image_ (1).png') center/cover no-repeat; min-height: 380px; }
+    .popup-body { width: 52%; padding: 48px 40px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+    .popup-tag { font-size: 11px; letter-spacing: 2px; color: #4a7c59; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; }
+    .popup-body h2 { font-family: 'Playfair Display', serif; font-size: 30px; color: #111; line-height: 1.2; margin-bottom: 16px; }
+    .popup-body p { font-size: 14px; color: #777; line-height: 1.7; margin-bottom: 28px; }
+    .popup-cta { width: 100%; padding: 14px; background: #4a7c59; color: #fff; font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border: none; border-radius: 4px; cursor: pointer; margin-bottom: 10px; transition: background 0.2s; }
     .popup-cta:hover { background: #3a6248; }
-
-    .popup-skip {
-      background: transparent;
-      border: 1px solid #ddd;
-      color: #999;
-      font-size: 13px;
-    }
-
+    .popup-skip { background: transparent; border: 1px solid #ddd; color: #999; font-size: 13px; }
     .popup-skip:hover { border-color: #aaa; color: #555; background: transparent; }
-
-    .popup-close {
-      position: absolute;
-      top: 14px;
-      right: 18px;
-      font-size: 24px;
-      color: #fff;
-      cursor: pointer;
-      line-height: 1;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.4);
-    }
-
-    /* ── RESPONSIVE ── */
+    .popup-close { position: absolute; top: 14px; right: 18px; font-size: 24px; color: #fff; cursor: pointer; line-height: 1; text-shadow: 0 1px 4px rgba(0,0,0,0.4); }
+    .email-input-wrap { width: 100%; margin-bottom: 14px; }
+    .email-input-wrap input { width: 100%; padding: 13px 16px; border: 1.5px solid #ddd; border-radius: 4px; font-size: 14px; font-family: 'Noto Sans KR', sans-serif; outline: none; transition: border-color 0.2s; }
+    .email-input-wrap input:focus { border-color: #4a7c59; }
+    .email-input-wrap input.error { border-color: #c0392b; }
+    .email-error { display: none; color: #c0392b; font-size: 12px; margin-top: 6px; }
+    .success-icon { font-size: 48px; margin-bottom: 12px; }
+    .discount-code-box { width: 100%; padding: 14px; background: #f0f5f2; border: 2px dashed #4a7c59; border-radius: 6px; text-align: center; font-size: 22px; font-weight: 700; color: #4a7c59; letter-spacing: 3px; margin-bottom: 20px; }
     @media (max-width: 900px) {
       .product-grid { grid-template-columns: repeat(2, 1fr); }
-      .hero-content h1 { font-size: 32px; }
     }
-
     @media (max-width: 600px) {
       .header-inner { padding: 0 16px; }
       .nav-links { display: none; }
-      .hero-content h1 { font-size: 24px; }
-      .hero-content p { font-size: 13px; }
-      .hero-tag { font-size: 10px; letter-spacing: 2px; }
       .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 0 12px 40px; }
       .section-header { padding: 0 12px; }
       .category-bar { padding: 0 12px; }
       .popup-img { display: none; }
       .popup-box { width: 92%; }
       .popup-body { width: 100%; padding: 32px 24px; }
+      .footer-top { flex-direction: column; }
     }
   </style>
 </head>
 <body>
 
-  <!-- TOP BAR -->
   <div class="top-bar">🌿 Free shipping on orders over ₩50,000 &nbsp;|&nbsp; New arrivals every week</div>
 
-  <!-- HEADER -->
   <header>
     <div class="header-inner">
       <div class="logo">Kbeauty With Me</div>
@@ -592,20 +118,15 @@
       <div class="header-icons">
         <span style="cursor:pointer">🔍</span>
         <span style="cursor:pointer">👤</span>
-        <span class="cart-icon">
-          🛒
-          <span class="cart-badge">0</span>
-        </span>
+        <span class="cart-icon">🛒<span class="cart-badge">0</span></span>
       </div>
     </div>
   </header>
 
-  <!-- HERO BANNER -->
   <a href="products.html" class="hero-banner">
     <img src="IMG_6244.PNG" alt="Kbeauty With Me Banner">
   </a>
 
-  <!-- CATEGORY PILLS -->
   <div class="category-bar">
     <div class="cat-pill active">All</div>
     <div class="cat-pill">Moisturizer</div>
@@ -617,15 +138,13 @@
     <div class="cat-pill">Mask</div>
   </div>
 
-  <!-- PRODUCTS -->
   <div class="section-header">
     <span class="section-title">All Products</span>
-    <span class="section-sub">6 items</span>
+    <span class="section-sub">8 items</span>
   </div>
 
   <div class="product-grid">
 
-    <!-- Product 1 -->
     <div class="product-card">
       <div class="product-img-wrap">
         <img src="Screen Shot 2026-04-02 at 11.15.26 PM.png" alt="345 Relief Cream">
@@ -636,10 +155,7 @@
         <div class="product-brand">Dr.Althea</div>
         <div class="product-name">345 Relief Cream</div>
         <div class="star-row">⭐⭐⭐⭐⭐ <span class="star-count">(128)</span></div>
-        <div class="product-tags">
-          <span class="tag">#cream</span>
-          <span class="tag">#relief</span>
-        </div>
+        <div class="product-tags"><span class="tag">#cream</span><span class="tag">#relief</span></div>
         <div class="product-price-row">
           <span class="price-original">₩50,000</span>
           <span class="price-sale">₩45,000</span>
@@ -648,7 +164,6 @@
       </div>
     </div>
 
-    <!-- Product 2 -->
     <div class="product-card">
       <div class="product-img-wrap">
         <img src="Screen Shot 2026-05-10 at 11.49.36 PM.png" alt="Centella Ampoule">
@@ -659,10 +174,7 @@
         <div class="product-brand">Skin1004</div>
         <div class="product-name">Madagascar Centella Ampoule 100ml</div>
         <div class="star-row">⭐⭐⭐⭐⭐ <span class="star-count">(342)</span></div>
-        <div class="product-tags">
-          <span class="tag">#bestseller</span>
-          <span class="tag">#soothing</span>
-        </div>
+        <div class="product-tags"><span class="tag">#bestseller</span><span class="tag">#soothing</span></div>
         <div class="product-price-row">
           <span class="price-original">₩26,000</span>
           <span class="price-sale">₩24,700</span>
@@ -671,7 +183,6 @@
       </div>
     </div>
 
-    <!-- Product 3 -->
     <div class="product-card">
       <div class="product-img-wrap">
         <img src="Screen Shot 2026-05-10 at 11.49.55 PM.png" alt="Cleansing Oil">
@@ -681,10 +192,7 @@
         <div class="product-brand">Skin1004</div>
         <div class="product-name">Centella Light Cleansing Oil 200ml</div>
         <div class="star-row">⭐⭐⭐⭐☆ <span class="star-count">(87)</span></div>
-        <div class="product-tags">
-          <span class="tag">#cleansing</span>
-          <span class="tag">#gentle</span>
-        </div>
+        <div class="product-tags"><span class="tag">#cleansing</span><span class="tag">#gentle</span></div>
         <div class="product-price-row">
           <span class="price-original">₩25,000</span>
           <span class="price-sale">₩23,750</span>
@@ -693,7 +201,6 @@
       </div>
     </div>
 
-    <!-- Product 4 -->
     <div class="product-card">
       <div class="product-img-wrap">
         <img src="Screen Shot 2026-05-10 at 11.50.23 PM.png" alt="Sun Serum">
@@ -704,10 +211,7 @@
         <div class="product-brand">Skin1004</div>
         <div class="product-name">Hyalu-Cica Water-Fit Sun Serum SPF50+ 50ml</div>
         <div class="star-row">⭐⭐⭐⭐⭐ <span class="star-count">(219)</span></div>
-        <div class="product-tags">
-          <span class="tag">#sunscreen</span>
-          <span class="tag">#hydrating</span>
-        </div>
+        <div class="product-tags"><span class="tag">#sunscreen</span><span class="tag">#hydrating</span></div>
         <div class="product-price-row">
           <span class="price-original">₩20,000</span>
           <span class="price-sale">₩19,000</span>
@@ -716,7 +220,6 @@
       </div>
     </div>
 
-    <!-- Product 5 -->
     <div class="product-card">
       <div class="product-img-wrap">
         <img src="DED91F45-E549-4088-A661-9064F8D2EBAB.JPG" alt="Sheet mask">
@@ -727,10 +230,7 @@
         <div class="product-brand">Torriden</div>
         <div class="product-name">Dive In Low-Molecular Hyaluronic Acid Mask Pack 10sheet</div>
         <div class="star-row">⭐⭐⭐⭐☆ <span class="star-count">(87)</span></div>
-        <div class="product-tags">
-          <span class="tag">#sheet mask</span>
-          <span class="tag">#gentle</span>
-        </div>
+        <div class="product-tags"><span class="tag">#sheet mask</span><span class="tag">#gentle</span></div>
         <div class="product-price-row">
           <span class="price-original">₩16,500</span>
           <span class="price-sale">₩13,200</span>
@@ -739,7 +239,6 @@
       </div>
     </div>
 
-    <!-- Product 6 -->
     <div class="product-card">
       <div class="product-img-wrap">
         <img src="90A79BDD-F6E7-4A9D-AC02-A1B5AC41861B.JPG" alt="Skin Toner">
@@ -750,10 +249,7 @@
         <div class="product-brand">Torriden</div>
         <div class="product-name">Dive In Low-Molecular Hyaluronic Acid Toner 300ml</div>
         <div class="star-row">⭐⭐⭐⭐⭐ <span class="star-count">(219)</span></div>
-        <div class="product-tags">
-          <span class="tag">#skin toner</span>
-          <span class="tag">#hydrating</span>
-        </div>
+        <div class="product-tags"><span class="tag">#skin toner</span><span class="tag">#hydrating</span></div>
         <div class="product-price-row">
           <span class="price-original">₩31,500</span>
           <span class="price-sale">₩25,200</span>
@@ -762,16 +258,52 @@
       </div>
     </div>
 
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <img src="779FAFE2-9842-4908-85BA-3153E4DE44C2.JPG" alt="Dive In Serum">
+        <span class="badge">BEST</span>
+        <div class="wishlist-btn">🤍</div>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Torriden</div>
+        <div class="product-name">Dive In Low-Molecular Hyaluronic Acid Serum 50ml</div>
+        <div class="star-row">⭐⭐⭐⭐⭐ <span class="star-count">(204)</span></div>
+        <div class="product-tags"><span class="tag">#serum</span><span class="tag">#hydrating</span></div>
+        <div class="product-price-row">
+          <span class="price-original">₩22,000</span>
+          <span class="price-sale">₩17,600</span>
+          <span class="price-rate">-20%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <img src="70ADF8BF-426B-4125-B4F5-2CBBE9016E4F.JPG" alt="Dive In Soothing Cream">
+        <span class="badge">BEST</span>
+        <div class="wishlist-btn">🤍</div>
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Torriden</div>
+        <div class="product-name">Dive In Low-Molecular Hyaluronic Acid Soothing Cream 100ml</div>
+        <div class="star-row">⭐⭐⭐⭐⭐ <span class="star-count">(163)</span></div>
+        <div class="product-tags"><span class="tag">#cream</span><span class="tag">#hydrating</span></div>
+        <div class="product-price-row">
+          <span class="price-original">₩24,000</span>
+          <span class="price-sale">₩19,200</span>
+          <span class="price-rate">-20%</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 
-  <!-- PROMO STRIP -->
   <div class="promo-strip">
     <h2>Your Glow, Our Mission</h2>
     <p>Handpicked K-Beauty essentials delivered to your door</p>
     <a href="#" class="promo-btn">Explore All Products</a>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <div class="footer-top">
@@ -810,13 +342,11 @@
     </div>
   </footer>
 
-  <!-- POPUP -->
   <div class="popup-overlay" id="popupOverlay">
     <div class="popup-box">
       <span class="popup-close" onclick="closePopup()">&times;</span>
       <div class="popup-img"></div>
 
-      <!-- STEP 1: Welcome -->
       <div class="popup-body" id="step1">
         <div class="popup-tag">Welcome Offer</div>
         <h2>Let's K-Beauty with Me</h2>
@@ -825,7 +355,6 @@
         <button class="popup-cta popup-skip" onclick="closePopup()">No, thank you</button>
       </div>
 
-      <!-- STEP 2: Email signup -->
       <div class="popup-body" id="step2" style="display:none;">
         <div class="popup-tag">Almost there!</div>
         <h2>Get 10% off your first order</h2>
@@ -838,7 +367,6 @@
         <button class="popup-cta popup-skip" onclick="closePopup()">No, thank you</button>
       </div>
 
-      <!-- STEP 3: Success -->
       <div class="popup-body" id="step3" style="display:none; text-align:center; align-items:center;">
         <div class="success-icon">🎉</div>
         <div class="popup-tag" style="text-align:center;">You're in!</div>
@@ -847,45 +375,8 @@
         <div class="discount-code-box">KBEAUTY10</div>
         <button class="popup-cta" onclick="closePopup()">Start Shopping ✨</button>
       </div>
-
     </div>
   </div>
-
-  <style>
-    .email-input-wrap { width: 100%; margin-bottom: 14px; }
-    .email-input-wrap input {
-      width: 100%;
-      padding: 13px 16px;
-      border: 1.5px solid #ddd;
-      border-radius: 4px;
-      font-size: 14px;
-      font-family: 'Noto Sans KR', sans-serif;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .email-input-wrap input:focus { border-color: #4a7c59; }
-    .email-input-wrap input.error { border-color: #c0392b; }
-    .email-error {
-      display: none;
-      color: #c0392b;
-      font-size: 12px;
-      margin-top: 6px;
-    }
-    .success-icon { font-size: 48px; margin-bottom: 12px; }
-    .discount-code-box {
-      width: 100%;
-      padding: 14px;
-      background: #f0f5f2;
-      border: 2px dashed #4a7c59;
-      border-radius: 6px;
-      text-align: center;
-      font-size: 22px;
-      font-weight: 700;
-      color: #4a7c59;
-      letter-spacing: 3px;
-      margin-bottom: 20px;
-    }
-  </style>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -901,7 +392,6 @@
       overlay.style.opacity = '0';
       setTimeout(function () {
         overlay.style.display = 'none';
-        // reset back to step1 for next open
         showStep('step1');
       }, 400);
     }
